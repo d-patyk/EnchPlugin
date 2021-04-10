@@ -28,6 +28,9 @@ public class MyListener implements Listener {
 
             NBTCompound nbt = PowerNBT.getApi().read(item);
 
+            if (nbt == null)
+                continue;
+
             if (nbt.containsKey("TokensHaste") && item.containsEnchantment(Enchantment.DIG_SPEED)) {
                 System.out.println(String.format("[EnchantFixer] Efficiency has been removed from player %s. Previous nbt: %s", player.getName(), nbt.toString()));
                 item.removeEnchantment(Enchantment.DIG_SPEED);
